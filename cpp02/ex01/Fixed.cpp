@@ -7,13 +7,19 @@ Fixed::Fixed():
 	std::cerr << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(Fixed& other):
-	_value(other._value) {
+Fixed::Fixed(const Fixed& other) {
 	std::cerr << "Copy constructor called" << std::endl;
+	*this = other;
 }
 
-Fixed::Fixed(const int nb) {
-	if ()
+Fixed::Fixed(const int nb):
+	_value(nb << this->_fractional_bits) {
+	std::cerr << "Int constructor called" << std::endl;
+}
+
+Fixed::Fixed(const float nb):
+	_value(roundf(nb * (1 << this->_fractional_bits))) {
+	std::cerr << "Float constructor called" << std::endl;
 }
 
 Fixed::~Fixed() {
@@ -29,11 +35,23 @@ Fixed&	Fixed::operator=(const Fixed& other) {
 }
 
 int		Fixed::getRawBits() const {
-	std::cerr << "getRawBits member function called" << std::endl;
 	return this->_value;
 }
 
 void	Fixed::setRawBits(const int raw) {
-	std::cerr << "setRawBits member function called" << std::endl;
 	this->_value = raw;
+}
+
+float	Fixed::toFloat(void) const {
+	return (float)this->_value / (1 << this->_fractional_bits);
+}
+
+int		Fixed::toInt(void) const {
+	return this->_value >> this->_fractional_bits;
+}
+
+std::ostream&	operator<<(std::ostream& os, const Fixed& fixed_point)
+{
+	os << fixed_point.toFloat();
+	return os;
 }
