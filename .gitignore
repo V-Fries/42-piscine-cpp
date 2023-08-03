@@ -16,6 +16,7 @@ cmake-build-debug/
 
 # Executables
 cpp02/ex01/ex01
+cpp02/ex02/ex02
 *.exe
 *.out
 *.app
