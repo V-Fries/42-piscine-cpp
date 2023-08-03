@@ -1,0 +1,14 @@
+.built
+.vscode
+
+megaphone
+myAwesomePhoneBook
+theJobOfYourDreams
+
+*.o
+*.d
+
+ex02/out
+ex02/out2
+ex02/test
+ex02/test2
