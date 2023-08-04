@@ -5,6 +5,7 @@ SRC_PATH =	./
 
 SRC =\
 	ClapTrap.cpp	\
+	ScavTrap.cpp	\
 	main.cpp
 
 

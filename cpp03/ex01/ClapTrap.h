@@ -4,23 +4,23 @@
 #include <string>
 
 class ClapTrap {
-private:
+protected:
 	std::string		_name;
 	unsigned int	_hitPoints;
 	unsigned int	_energyPoints;
 	unsigned int	_attackDamage;
 public:
 	ClapTrap();
-	ClapTrap(const ClapTrap& clapTrap);
+	ClapTrap(const ClapTrap& other);
 	ClapTrap(const std::string& name);
 
-	~ClapTrap();
+	virtual ~ClapTrap();
 
-	ClapTrap&	operator=(const ClapTrap& right);
+	ClapTrap&	operator=(const ClapTrap& other);
 
-	void		attack(const std::string& target);
-	void		takeDamage(unsigned int amount);
-	void		beRepaired(unsigned int amount);
+	virtual void	attack(const std::string& target);
+	void			takeDamage(unsigned int amount);
+	void			beRepaired(unsigned int amount);
 };
 
 #endif

@@ -11,11 +11,11 @@ ClapTrap::ClapTrap():
 	std::cerr << "ClapTrap " << this->_name << " was created by default constructor" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& clapTrap):
-	_name(clapTrap._name),
-	_hitPoints(clapTrap._hitPoints),
-	_energyPoints(clapTrap._energyPoints),
-	_attackDamage(clapTrap._attackDamage) {
+ClapTrap::ClapTrap(const ClapTrap& other):
+	_name(other._name),
+	_hitPoints(other._hitPoints),
+	_energyPoints(other._energyPoints),
+	_attackDamage(other._attackDamage) {
 	std::cerr << "ClapTrap " << this->_name << " was created by copy constructor" << std::endl;
 }
 
@@ -33,15 +33,15 @@ ClapTrap::~ClapTrap() {
 }
 
 
-ClapTrap&	ClapTrap::operator=(const ClapTrap& right) {
+ClapTrap&	ClapTrap::operator=(const ClapTrap& other) {
 	std::cerr << "ClapTrap " << this->_name << " assignment operator was called, it will be overwriten by "
-			  << right._name << std::endl;
-	if (this == &right)
+			  << other._name << std::endl;
+	if (this == &other)
 		return *this;
-	this->_name = right._name;
-	this->_hitPoints = right._hitPoints;
-	this->_energyPoints = right._energyPoints;
-	this->_attackDamage = right._attackDamage;
+	this->_name = other._name;
+	this->_hitPoints = other._hitPoints;
+	this->_energyPoints = other._energyPoints;
+	this->_attackDamage = other._attackDamage;
 	return *this;
 }
 
@@ -65,7 +65,7 @@ void		ClapTrap::attack(const std::string& target) {
 			  << "ClapTrap " << this->_name << " has " << this->_energyPoints << " energy points left" << std::endl;
 
 	if (this->_energyPoints == 0)
-		std::cout << this->_name << " is out of energy points" << std::endl;
+		std::cout << "ClapTrap " << this->_name << " is out of energy points" << std::endl;
 }
 
 void		ClapTrap::takeDamage(unsigned int amount) {
@@ -79,25 +79,25 @@ void		ClapTrap::takeDamage(unsigned int amount) {
 	else
 		this->_hitPoints -= amount;
 
-	std::cout << "ClapTrap " << this->_name << " lost " << amount << " hit points\n"
-			  << "ClapTrap " << this->_name << " new health is " << this->_hitPoints << std::endl;
+	std::cout << this->_name << " lost " << amount << " hit points\n"
+			  << this->_name << " new health is " << this->_hitPoints << std::endl;
 	
 	if (this->_hitPoints == 0)
-		std::cout << "ClapTrap " << this->_name << " is out of health" << std::endl;
+		std::cout << this->_name << " is out of health" << std::endl;
 }
 
 void		ClapTrap::beRepaired(unsigned int amount) {
 	if (this->_energyPoints == 0) {
-		std::cout << "ClapTrap " << this->_name << " can't be repaired as it is out of energy points\n";
+		std::cout << this->_name << " can't be repaired as it is out of energy points\n";
 		return;
 	}
 	if (this->_hitPoints == 0) {
-		std::cout << "ClapTrap " << this->_name << " can't be repaired as it is damaged too badly\n";
+		std::cout << this->_name << " can't be repaired as it is damaged too badly\n";
 		return;
 	}
 
 	if (this->_hitPoints > std::numeric_limits<unsigned int>::max() - amount) {
-		std::cerr << "Warning " << "ClapTrap " << this->_name << " hit points overflowed during repair,"
+		std::cerr << "Warning " << this->_name << " hit points overflowed during repair,"
 				  	" setting hit points to " << std::numeric_limits<unsigned int>::max()
 				  << std::endl;
 		this->_hitPoints = std::numeric_limits<unsigned int>::max();
@@ -107,10 +107,10 @@ void		ClapTrap::beRepaired(unsigned int amount) {
 
 	this->_energyPoints -= 1;
 
-	std::cout << "ClapTrap " << this->_name << " healed by " << amount << " hit points, current health is "
+	std::cout << this->_name << " healed by " << amount << " hit points, current health is "
 				<< this->_hitPoints << '\n'
-			  << "ClapTrap " << this->_name << " has " << this->_energyPoints << " Energy points left" << std::endl;
+			  << this->_name << " has " << this->_energyPoints << " Energy points left" << std::endl;
 
 	if (this->_energyPoints == 0)
-		std::cout << "ClapTrap " << this->_name << " is out of energy points" << std::endl;
+		std::cout << this->_name << " is out of energy points" << std::endl;
 }
