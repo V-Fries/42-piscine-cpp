@@ -15,8 +15,10 @@ better_norminette.log
 cmake-build-debug/
 
 # Executables
+cpp02/ex00/ex00
 cpp02/ex01/ex01
 cpp02/ex02/ex02
+cpp02/ex03/ex03
 *.exe
 *.out
 *.app
