@@ -46,6 +46,7 @@ int	main(void)
 		trap.takeDamage(100);
 		clap = trap;
 		trap.takeDamage(100);
+		trap.guardGate();
 	}
 	{
 		ClapTrap*	test = new ScavTrap("test");
