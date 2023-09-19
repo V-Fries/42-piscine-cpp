@@ -13,7 +13,7 @@ int	main() {
 			animals[i] = new Cat;
 		else
 			animals[i] = new Dog;
-	std::cout << std::endl;
+		std::cout << std::endl;
 	}
 
 	std::cout << std::endl << std::endl;
@@ -25,7 +25,7 @@ int	main() {
 	std::cout << std::endl << std::endl;
 	for (size_t i = 0; i < animalsSize; i++) {
 		delete animals[i];
-	std::cout << std::endl;
+		std::cout << std::endl;
 	}
 
 	std::cout << std::endl << std::endl << std::endl << std::endl;
