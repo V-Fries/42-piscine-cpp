@@ -20,7 +20,7 @@ int	main() {
 	}
 
 
-	Bureaucrat	correctBureaucrat("name", 4);
+	Bureaucrat	correctBureaucrat("Cool name", 4);
 
 	try {
 		while (true) {

@@ -12,8 +12,8 @@ public:
 
 
 private:
-	std::string	_name;
-	GradeInt	_grade;
+	const std::string	_name;
+	GradeInt			_grade;
 
 	class GradeTooHighException : public std::exception {
 		const char*	what() const throw();
