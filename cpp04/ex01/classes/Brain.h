@@ -2,7 +2,7 @@
 
 #include <string>
 
-typedef uint8_t IdeasSizeUInt;
+typedef unsigned char IdeasSizeUInt;
 
 class Brain {
 public:
