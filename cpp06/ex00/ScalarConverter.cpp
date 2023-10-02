@@ -15,6 +15,16 @@ static void	printInt(const double literal);
 static void	printFloat(const double literal);
 static void	printDouble(const double literal);
 
+ScalarConverter::ScalarConverter() {}
+
+ScalarConverter::ScalarConverter(const ScalarConverter& other) {static_cast<void>(other);}
+ScalarConverter::~ScalarConverter() {}
+
+ScalarConverter&	ScalarConverter::operator=(const ScalarConverter& other) {
+	static_cast<void>(other);
+	return *this;
+}
+
 void	ScalarConverter::convert(const std::string& literalString) {
 	if (literalString.length() == 1)
 		return convertCharacter(literalString[0]);
