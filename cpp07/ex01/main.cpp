@@ -35,6 +35,8 @@ int	main() {
 	std::cout << std::endl;
 	
 	printArray(arr, ARR_SIZE);
+
+	delete[] arr;
 }
 
 template <typename T>
