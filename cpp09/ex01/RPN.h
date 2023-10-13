@@ -1,9 +1,13 @@
 #pragma once
 
 #include <string>
+#include <stack>
 
 class RPN {
 public:
+	typedef double					OperandType;
+	typedef std::stack<OperandType>	Stack;
+
 	RPN();
 	RPN(const RPN& other);
 
@@ -11,5 +15,5 @@ public:
 
 	RPN&	operator=(const RPN& rightValue);
 
-	static void	solveRPNCalculation(const std::string& RPNCalculation);
+	static OperandType	solveRPNCalculation(const std::string& RPNCalculation);
 };

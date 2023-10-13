@@ -4,7 +4,7 @@ NAME =	RPN
 SRC_PATH =	./
 
 SRC =\
-	BitcoinExchange.cpp	\
+	RPN.cpp	\
 	main.cpp
 
 
@@ -22,7 +22,7 @@ DIR_BUILD =		.build/
 OBJS =			$(patsubst %.cpp, $(DIR_BUILD)%.o, $(SRC))
 DEPS =			$(patsubst %.cpp, $(DIR_BUILD)%.d, $(SRC))
 DEPS_FLAGS =	-MMD -MP
-CPPFLAGS =		-Wall -Wextra -Werror -Wshadow -std=c++98 -g3 -fsanitize=address
+CPPFLAGS =		-Wall -Wextra -Werror -Wshadow -std=c++98 -g3 # -fsanitize=address
 RM =			rm -rf
 AR =			ar rcs
 
