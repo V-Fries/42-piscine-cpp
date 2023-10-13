@@ -213,18 +213,10 @@ void	BitcoinExchange::evaluatePrices(const char* fileWithPricesToEvaluate) {
 
 
 double	BitcoinExchange::getExchangeRateFromKey(const long key) const {
-	std::map<long, double>::const_iterator it = this->_prices.find(key);
-
-	if (it != this->_prices.end())
-		return it->second;
-
-	it = this->_prices.begin();
-	if (it->first > key)
+	std::map<long, double>::const_iterator	it = this->_prices.upper_bound(key);
+	if (it == this->_prices.begin())
 		throw (std::invalid_argument("there is no price at or before this date"));
-	std::map<long, double>::const_iterator previousIt;
-	for (; it != this->_prices.end() && it->first < key; it++)
-		previousIt = it;
-	return previousIt->second;
+	return (--it)->second;
 }
 
 
