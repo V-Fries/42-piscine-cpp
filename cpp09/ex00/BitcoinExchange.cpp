@@ -282,5 +282,4 @@ static bool	isValidPriceLineFormat(const std::string& line) {
 	std::strtod(line.c_str() + i + 1, &postPricePtr);
 	size_t	postPriceIndex = postPricePtr - line.c_str();
 	return postPriceIndex == line.length();
-	return i == line.length();
 }
