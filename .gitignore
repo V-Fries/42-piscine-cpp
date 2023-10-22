@@ -28,6 +28,7 @@ cpp03/ex03/ex03
 cpp04/ex00/ex00
 cpp04/ex01/ex01
 cpp04/ex02/ex02
+cpp04/ex03/ex03
 
 cpp05/ex00/ex00
 cpp05/ex01/ex01
@@ -50,6 +51,7 @@ cpp09/ex00/btc
 cpp09/ex00/data.csv
 cpp09/ex00/input.txt
 cpp09/ex01/RPN
+cpp09/ex02/PmergeMe
 
 *.exe
 *.out
