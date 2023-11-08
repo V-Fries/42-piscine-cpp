@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DOG_H
+# define DOG_H
 
 #include <string>
 
@@ -21,3 +22,5 @@ public:
 	void				addIdea(const std::string& idea);
 	const std::string&	getIdea(const IdeasSizeUInt index) const;
 };
+
+#endif

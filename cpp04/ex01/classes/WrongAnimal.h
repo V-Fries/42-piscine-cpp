@@ -1,4 +1,5 @@
-#pragma once
+#ifndef WRONGANIMAL_H
+# define WRONGANIMAL_H
 
 #include <string>
 
@@ -18,3 +19,5 @@ public:
 	const std::string&	getType() const;
 	void				makeSound() const;
 };
+
+#endif

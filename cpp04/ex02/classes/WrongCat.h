@@ -1,4 +1,5 @@
-#pragma once
+#ifndef WRONGCAT_H
+# define WRONGCAT_H
 
 #include <string>
 
@@ -15,3 +16,5 @@ public:
 
 	void	makeSound() const;
 };
+
+#endif

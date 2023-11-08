@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BRAIN_H
+# define BRAIN_H
 
 #include <string>
 
@@ -22,3 +23,5 @@ private:
 	std::string					_ideas[Brain::ideasSize];
 	IdeasSizeUInt				_ideasIndex;
 };
+
+#endif

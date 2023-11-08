@@ -1,3 +1,6 @@
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
+
 #include "IMateriaSource.hpp"
 #include "AMateria.hpp"
 
@@ -18,3 +21,5 @@ public:
 	void		learnMateria(AMateria* m);
 	AMateria*	createMateria(const std::string& type);
 };
+
+#endif

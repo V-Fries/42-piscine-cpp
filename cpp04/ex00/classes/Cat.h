@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CAT_H
+# define CAT_H
 
 #include <string>
 
@@ -15,3 +16,5 @@ public:
 
 	void	makeSound() const;
 };
+
+#endif
