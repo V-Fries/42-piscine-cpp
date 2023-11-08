@@ -8,7 +8,8 @@ WrongCat::WrongCat():
 	std::cerr << "WrongCat default constructor called" << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat& other) {
+WrongCat::WrongCat(const WrongCat& other):
+	WrongAnimal(other) {
 	*this = other;
 	std::cerr << "WrongCat copy constructor called" << std::endl;
 }
@@ -20,7 +21,7 @@ WrongCat::~WrongCat() {
 WrongCat& WrongCat::operator=(const WrongCat& other) {
 	if (this == &other)
 		return *this;
-	this->type = other.type;
+	this->_type = other._type;
 	return *this;
 }
 

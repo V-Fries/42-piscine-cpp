@@ -3,7 +3,7 @@
 #include "AAnimal.h"
 
 AAnimal::AAnimal():
-	type("Unknown animal")
+	_type("Unknown animal")
 {
 	std::cerr << "AAnimal default constructor called" << std::endl;
 }
@@ -14,7 +14,7 @@ AAnimal::AAnimal(const AAnimal& other) {
 }
 
 AAnimal::AAnimal(const std::string& type):
-	type(type)
+	_type(type)
 {
 	std::cerr << "AAnimal std::string constructor called" << std::endl;
 }
@@ -26,12 +26,12 @@ AAnimal::~AAnimal() {
 AAnimal& AAnimal::operator=(const AAnimal& other) {
 	if (this == &other)
 		return *this;
-	this->type = other.type;
+	this->_type = other._type;
 	return *this;
 }
 
 const std::string&	AAnimal::getType() const {
-	return this->type;
+	return this->_type;
 }
 
 void	AAnimal::makeSound() const {

@@ -3,7 +3,7 @@
 #include "WrongAnimal.h"
 
 WrongAnimal::WrongAnimal():
-	type("Unknown animal")
+	_type("Unknown animal")
 {
 	std::cerr << "WrongAnimal default constructor called" << std::endl;
 }
@@ -14,7 +14,7 @@ WrongAnimal::WrongAnimal(const WrongAnimal& other) {
 }
 
 WrongAnimal::WrongAnimal(const std::string& type):
-	type(type)
+	_type(type)
 {
 	std::cerr << "WrongAnimal std::string constructor called" << std::endl;
 }
@@ -26,12 +26,12 @@ WrongAnimal::~WrongAnimal() {
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other) {
 	if (this == &other)
 		return *this;
-	this->type = other.type;
+	this->_type = other._type;
 	return *this;
 }
 
 const std::string&	WrongAnimal::getType() const {
-	return this->type;
+	return this->_type;
 }
 
 void	WrongAnimal::makeSound() const {

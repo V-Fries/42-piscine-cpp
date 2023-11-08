@@ -11,6 +11,7 @@ Cat::Cat():
 }
 
 Cat::Cat(const Cat& other):
+	AAnimal(other),
 	_brain(NULL)
 {
 	*this = other;
@@ -28,7 +29,7 @@ Cat& Cat::operator=(const Cat& other) {
 
 	delete this->_brain;
 	this->_brain = new Brain(*other._brain);
-	this->type = other.type;
+	this->_type = other._type;
 	return *this;
 }
 

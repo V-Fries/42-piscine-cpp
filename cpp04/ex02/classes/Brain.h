@@ -2,6 +2,7 @@
 # define BRAIN_H
 
 #include <string>
+#include <stdint.h>
 
 typedef uint8_t IdeasSizeUInt;
 
