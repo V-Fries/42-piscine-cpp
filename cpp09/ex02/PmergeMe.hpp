@@ -33,9 +33,9 @@ class PmergeMe {
                                   const std::vector<int>& smallestSecondHalf);
 
 
-        static void _binaryInsertElems(const std::vector<int>& vector,
-                                       std::vector<int>& result,
-                                       std::vector<int>::const_iterator middle);
+        static void _binaryInsertElems(const std::vector<int>::const_iterator greatests,
+                                       const std::vector<int>::const_iterator lowests,
+                                       std::vector<int>& result);
 
         static size_t _jacobsthalSequence(int8_t i);
 

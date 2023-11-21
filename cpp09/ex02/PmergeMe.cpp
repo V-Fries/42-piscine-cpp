@@ -3,7 +3,8 @@
 std::ostream& operator<<(std::ostream& os, const std::vector<int>& vector);
 
 PmergeMe::PmergeMe() {}
-PmergeMe::PmergeMe(const PmergeMe& other) {static_cast<void>(other);}
+
+PmergeMe::PmergeMe(const PmergeMe& other) { static_cast<void>(other); }
 
 PmergeMe::~PmergeMe() {}
 
@@ -15,7 +16,7 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& rightValue) {
 void PmergeMe::sortVector(std::vector<int>& vector) {
     if (vector.size() <= 1) return;
 
-    std::vector<int>::iterator middle(vector.begin() + (vector.end() - vector.begin()) / 2);
+    const std::vector<int>::iterator middle(vector.begin() + vector.size() / 2);
 
     _divideInPairs(vector, middle);
 
@@ -26,7 +27,7 @@ void PmergeMe::sortVector(std::vector<int>& vector) {
     result.push_back(*middle);
     result.push_back(*vector.begin());
 
-    _binaryInsertElems(vector, result, middle);
+    _binaryInsertElems(vector.begin(), middle, result);
 
     if (vector.size() % 2) _binaryInsert(result, vector.end()[-1]);
 
@@ -52,7 +53,7 @@ void PmergeMe::_mergeSortPairs(std::vector<int>::iterator biggestBegin,
     if (biggestEnd - biggestBegin < 2) return;
 
     std::vector<int>::iterator biggestMiddle = biggestBegin
-                                                + (biggestEnd - biggestBegin) / 2;
+                                               + (biggestEnd - biggestBegin) / 2;
     std::vector<int>::iterator smallestMiddle = smallestBegin
                                                 + (smallestEnd - smallestBegin) / 2;
 
@@ -69,7 +70,6 @@ void PmergeMe::_mergeSortPairs(std::vector<int>::iterator biggestBegin,
     _mergeVectors(biggestBegin, smallestBegin,
                   biggestFirstHalf, biggestSecondHalf,
                   smallestFirstHalf, smallestSecondHalf);
-
 }
 
 void PmergeMe::_mergeVectors(std::vector<int>::iterator biggestBegin,
@@ -103,30 +103,30 @@ void PmergeMe::_mergeVectors(std::vector<int>::iterator biggestBegin,
     }
 }
 
-
-void PmergeMe::_binaryInsertElems(const std::vector<int>& vector,
-                                  std::vector<int>& result,
-                                  const std::vector<int>::const_iterator middle) {
-    int8_t jacobsthalSequenceIndex = 3;
+void PmergeMe::_binaryInsertElems(const std::vector<int>::const_iterator greatests,
+                                  const std::vector<int>::const_iterator lowests,
+                                  std::vector<int>& result) {
     size_t lastInsertedElem = 0;
-    size_t lastElemToInsert = middle - 1 - vector.begin();
+    int8_t jacobsthalSequenceIndex = 3;
+    const size_t lastElemToInsert = lowests - greatests - 1;
     while (lastInsertedElem < lastElemToInsert) {
-        size_t elemToInsertIndex = std::min(_jacobsthalSequence(jacobsthalSequenceIndex++),
-                                            vector.size() - 1);
-        for (size_t i = lastInsertedElem; i <= elemToInsertIndex; ++i) {
-            result.push_back(vector[i]);
+        const size_t indexToStopAt = std::min(_jacobsthalSequence(jacobsthalSequenceIndex++),
+                                              lastElemToInsert + 1);
+        for (size_t i = lastInsertedElem + 1; i < indexToStopAt; ++i) {
+            result.push_back(greatests[i]);
         }
-        for (size_t i = elemToInsertIndex; i > lastInsertedElem; --i) {
-            _binaryInsert(result, middle[i]);
+        for (size_t i = indexToStopAt - 1; i > lastInsertedElem; --i) {
+            _binaryInsert(result, lowests[i]);
         }
-        lastInsertedElem = elemToInsertIndex;
+        lastInsertedElem = indexToStopAt - 1;
     }
 }
 
 size_t PmergeMe::_jacobsthalSequence(int8_t i) {
-    static size_t cache[127] = {0, 1};
+    static size_t cache[65] = {0, 1};
 
     if (i <= 0) return 0;
+    if (i >= 65) return 12297829382473034411u;
     if (cache[i] != 0) return cache[i];
 
     cache[i] = _jacobsthalSequence(i - 1) + 2 * _jacobsthalSequence(i - 2);
