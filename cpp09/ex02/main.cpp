@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <stdexcept>
 #include <limits>
+#include <algorithm>
 
 static void addNumber(std::vector<int>& vector, const std::string& numberStr);
 
@@ -19,11 +20,13 @@ int main(int argc, char** argv) {
     static_cast<void>(addNumber);
 
 //    while (true) {
-//        size_t limit = rand() % 1;
-        size_t limit = 2;
+        size_t limit = rand() % 42;
+//        size_t limit = 2;
         for (size_t i = 0; i < limit; i++) {
             vector.push_back(rand() % 300);
         }
+        std::vector<int> vectorSortedBySTL(vector);
+        std::sort(vectorSortedBySTL.begin(), vectorSortedBySTL.end());
 
     //    for (int i = 1; i < argc; i++) {
     //        try {
@@ -34,23 +37,37 @@ int main(int argc, char** argv) {
     //        }
     //    }
 
-        //std::list<int> list(vector.begin(), vector.end());
+        std::list<int> list(vector.begin(), vector.end());
+        std::list<int> listSortedBySTL(vector.begin(), vector.end());
+        listSortedBySTL.sort();
 
+        std::cout << "list before sort:\t" << list << std::endl;
+        PmergeMe::sort(list);
+        std::cout << "list post sort:\t\t" << list << std::endl;
+        bool isFucked = false;
+        for (size_t i(0); i < list.size(); ++i) {
+            std::list<int>::iterator listIt = list.begin();
+            std::list<int>::iterator listSortedBySTLIt = listSortedBySTL.begin();
+            std::advance(listIt, i);
+            std::advance(listSortedBySTLIt, i);
+            if (*listIt != *listSortedBySTLIt) {
+                isFucked = true;
+                std::cout << "List fuck" << std::endl;
+                break;
+            }
+        }
+        if (!isFucked) std::cout << "List OK\n" << std::endl;
 
-        std::vector<int> preSort(vector);
-        PmergeMe::sortVector(vector);
-        int i = std::numeric_limits<int>::min();
-        for (std::vector<int>::const_iterator it = vector.begin(); it != vector.end(); ++it) {
-            if (*it < i) {
-                std::cout << "vector before sort:\t" << preSort << std::endl;
-                std::cout << "vector post sort:\t" << vector << std::endl;
-                std::cout << "Fuck sortVector" << std::endl;
-                continue;
+        std::cout << "vector before sort:\t" << vector << std::endl;
+        PmergeMe::sort(vector);
+        std::cout << "vector post sort:\t" << vector << std::endl;
+        for (size_t i(0); i < vector.size(); ++i) {
+            if (vector[i] != vectorSortedBySTL[i]) {
+                std::cout << "Vector fuck" << std::endl;
                 return 1;
             }
-            i = *it;
         }
-        std::cout << "OK" << std::endl;
+        std::cout << "Vector OK" << std::endl;
 //    }
 
 //  TODO
