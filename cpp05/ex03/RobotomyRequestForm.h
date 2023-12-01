@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ROBOTOMY_REQUEST_FORM_H
+# define ROBOTOMY_REQUEST_FORM_H
 
 #include "AForm.h"
 
@@ -18,3 +19,5 @@ public:
 
 	void	execute(const Bureaucrat& executor) const;
 };
+
+#endif

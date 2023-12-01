@@ -1,4 +1,5 @@
-#pragma once
+#ifndef FORM_H
+# define FORM_H
 
 #include <iostream>
 
@@ -56,3 +57,5 @@ public:
 };
 
 std::ostream&	operator<<(std::ostream& os, const Form& form);
+
+#endif
