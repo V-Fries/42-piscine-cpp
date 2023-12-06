@@ -68,19 +68,19 @@ void	identify(Base* p) {
 
 void	identify(Base& p) {
 	try {
-		dynamic_cast<A&>(p);
+		static_cast<void>(dynamic_cast<A&>(p));
 		std::cout << "Base& p type is A&" << std::endl;
 		g_typeRef = TYPE_A;
 		return;
 	} catch (std::exception& e) {}
 	try {
-		dynamic_cast<B&>(p);
+		static_cast<void>(dynamic_cast<B&>(p));
 		std::cout << "Base& p type is B&" << std::endl;
 		g_typeRef = TYPE_B;
 		return;
 	} catch (std::exception& e) {}
 	try {
-		dynamic_cast<C&>(p);
+		static_cast<void>(dynamic_cast<C&>(p));
 		std::cout << "Base& p type is C&" << std::endl;
 		g_typeRef = TYPE_C;
 		return;

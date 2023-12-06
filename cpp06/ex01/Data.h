@@ -1,3 +1,6 @@
+#ifndef DATA_H
+# define DATA_H
+
 #include <iostream>
 
 typedef struct Data {
@@ -7,3 +10,5 @@ typedef struct Data {
 }	Data;
 
 std::ostream&	operator<<(std::ostream& os, const Data& data);
+
+#endif
