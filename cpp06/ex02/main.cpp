@@ -28,6 +28,8 @@ int	main() {
 	identify(base);
 	identify(*base);
 
+	delete base;
+
 	if (g_typePtr == TYPE_ERROR)
 		std::cerr << "Error: g_typePtr == TYPE_ERROR" << std::endl;
 	if (g_typeRef == TYPE_ERROR)

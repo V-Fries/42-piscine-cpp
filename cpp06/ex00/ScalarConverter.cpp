@@ -26,7 +26,8 @@ ScalarConverter&	ScalarConverter::operator=(const ScalarConverter& other) {
 }
 
 void	ScalarConverter::convert(const std::string& literalString) {
-	if (literalString.length() == 1)
+	if (literalString.length() == 1
+		&& !std::isdigit(static_cast<unsigned char>(literalString[0])))
 		return convertCharacter(literalString[0]);
 
 	char*			lastTreatedChar;
