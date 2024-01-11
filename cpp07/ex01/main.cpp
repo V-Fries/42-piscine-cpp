@@ -30,7 +30,7 @@ int	main() {
 
 	printArray(arr, ARR_SIZE);
 
-	std::cout << "Incrementing array" << std::endl;
+	std::cout << "Decrementing array" << std::endl;
 	iter<int>(arr, ARR_SIZE, &decrement);
 	std::cout << std::endl;
 	

@@ -1,3 +1,6 @@
+#ifndef ARRAY_HPP
+# define ARRAY_HPP
+
 #include <iostream>
 
 template <typename T>
@@ -75,3 +78,5 @@ std::ostream& operator<<(std::ostream& os, const Array<T>& arr) {
 	os << arr[arr.size() - 1];
 	return os;
 }
+
+#endif

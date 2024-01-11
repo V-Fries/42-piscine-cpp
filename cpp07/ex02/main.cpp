@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "Array.h"
+#include "Array.hpp"
 
 template <typename T>
 void	testArray(const unsigned int size, const T& firstValue,

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ITER_HPP
+# define ITER_HPP
 
 #include <cstdlib>
 
@@ -31,3 +32,5 @@ void	iter(const T* array, const size_t size, void (*f)(const T& elem)) {
 		array++;
 	}
 }
+
+#endif
