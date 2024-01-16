@@ -1,4 +1,5 @@
-#pragma once
+#ifndef EASY_FIND_HPP
+# define EASY_FIND_HPP
 
 #include <algorithm>
 
@@ -19,3 +20,5 @@ const typename T::iterator	easyfind(const T &container, const int toFind)
 		throw (std::exception());
 	return it;
 }
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SPAN_HPP
+# define SPAN_HPP
 
 #include <vector>
 
@@ -34,3 +35,5 @@ public:
 };
 
 std::ostream&	operator<<(std::ostream& os, const Span& span);
+
+#endif

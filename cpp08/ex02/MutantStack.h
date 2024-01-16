@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MUTANT_STACK_HPP
+# define MUTANT_STACK_HPP
 
 #include <stack>
 
@@ -44,3 +45,5 @@ public:
 		return this->c.rend();
 	}
 };
+
+#endif

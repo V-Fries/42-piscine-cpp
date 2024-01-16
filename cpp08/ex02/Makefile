@@ -24,6 +24,7 @@ DEPS_FLAGS =	-MMD -MP
 CPPFLAGS =		-Wall -Wextra -Werror -Wshadow -std=c++98 -g3 -fsanitize=address
 RM =			rm -rf
 AR =			ar rcs
+CXX =			c++
 
 
 .PHONY:		all
