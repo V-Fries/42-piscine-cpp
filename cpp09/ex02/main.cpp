@@ -7,9 +7,7 @@
 #include <cstdlib>
 #include <stdexcept>
 #include <limits>
-#include <chrono>
-
-typedef std::chrono::time_point<std::chrono::steady_clock> Time;
+#include <ctime>
 
 static void addNumber(std::vector<int>& vector, const std::string& numberStr);
 
@@ -28,15 +26,15 @@ int main(int argc, char** argv) {
 
     std::cout << "Unsorted numbers: " << vector << std::endl;
 
-    Time startTime = std::chrono::high_resolution_clock::now();
+    clock_t startTime = clock();
     PmergeMe::sort(vector);
-    Time endTime = std::chrono::high_resolution_clock::now();
-    long long vectorSortDuration = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count();
+    clock_t endTime = clock();
+    double vectorSortDuration = (endTime - startTime) / (double)CLOCKS_PER_SEC * 1000.0;
 
-    startTime = std::chrono::high_resolution_clock::now();
+    startTime = clock();
     PmergeMe::sort(list);
-    endTime = std::chrono::high_resolution_clock::now();
-    long long listSortDuration = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count();
+    endTime = clock();
+    double listSortDuration = (endTime - startTime) / (double)CLOCKS_PER_SEC * 1000.0;
 
     std::cout << "Sorted numbers: " << vector << "\n"
                  "Time to sort vector: " << vectorSortDuration << "ms\n"
