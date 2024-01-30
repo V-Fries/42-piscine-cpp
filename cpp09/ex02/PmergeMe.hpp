@@ -203,6 +203,5 @@ class PmergeMe {
 };
 
 std::ostream& operator<<(std::ostream& os, const std::vector<int>& vector);
-std::ostream& operator<<(std::ostream& os, const std::list<int>& list);
 
 #endif

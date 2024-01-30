@@ -27,28 +27,18 @@ size_t PmergeMe::_jacobsthalSequence(const int8_t i) {
 }
 
 std::ostream& operator<<(std::ostream& os, const std::vector<int>& vector) {
+    if (vector.size() == 0) {
+        os << "[]";
+        return os;
+    }
+
     std::vector<int>::const_iterator it = vector.begin();
     std::vector<int>::const_iterator lastElem = vector.end() - 1;
 
-    if (it == vector.end())
-        return os;
-    for (; it != lastElem; it++) {
+    os << '[';
+    for (; it != lastElem; ++it) {
         os << *it << ", ";
     }
-    os << *it;
-    return os;
-}
-
-std::ostream& operator<<(std::ostream& os, const std::list<int>& list) {
-    std::list<int>::const_iterator it = list.begin();
-    std::list<int>::const_iterator lastElem = list.end();
-    std::advance(lastElem, -1);
-
-    if (it == list.end())
-        return os;
-    for (; it != lastElem; it++) {
-        os << *it << ", ";
-    }
-    os << *it;
+    os << *it << ']';
     return os;
 }
